@@ -1,57 +1,71 @@
-# سایت شخصی هاشم شیخی‌پور (HTML/CSS/JS استاتیک)
+# Hashem Sheikhypour: Personal Portfolio
 
-سایت دو زبانه (انگلیسی و فارسی) بدون فریم‌ورک و بدون مرحلهٔ build.
+A bilingual (English and Persian) personal portfolio built with plain HTML, CSS and JavaScript. No framework, no build step.
 
-## ساختار
+Live site: https://hashemsh.github.io/
+
+## Features
+
+- Scroll-driven video: a 240-frame WebP sequence is drawn on a canvas and scrubbed by scroll position
+- "Build-in" animation: cursors place each section's content as you scroll
+- Smooth wheel scrolling and a two-card services slider
+- English (LTR) and Persian (RTL) versions with a language switch in the header
+- Responsive layout, reduced-motion support, no dependencies
+
+## Project structure
 
 ```
-hashem-site/
-├── index.html            ← نسخهٔ انگلیسی  (آدرس: /)
+.
+├── index.html            English version  (/)
 ├── fa/
-│   └── index.html        ← نسخهٔ فارسی    (آدرس: /fa/)
+│   └── index.html        Persian version  (/fa/)
 ├── css/
-│   ├── style.css         ← استایل مشترک
-│   └── fa.css            ← تغییرات راست‌به‌چپ و فونت فارسی
+│   ├── style.css         Shared styles
+│   └── fa.css            RTL and Persian font overrides
 ├── js/
-│   └── main.js           ← اسکرول نرم، پخش فریم‌های ویدئو، انیمیشن ساخت صفحه
+│   └── main.js           Scroll, frame playback, build-in animation, slider
 ├── assets/
-│   ├── frames/           ← ۲۴۰ فریم ویدئو (f001.webp تا f240.webp)
-│   └── img/              ← لوگو، favicon، apple-touch-icon
+│   ├── frames/           Video frames (f001.webp … f240.webp)
+│   └── img/              Logo, favicon, apple-touch-icon
 ├── robots.txt
 ├── sitemap.xml
 └── .nojekyll
 ```
 
-## انتشار روی GitHub Pages (آدرس اصلی اکانت)
+## Run locally
 
-1. یک ریپوی جدید بساز با نام دقیق `hashemsh.github.io` (عمومی).
-2. همهٔ محتوای پوشهٔ `hashem-site` را (نه خود پوشه را) در ریشهٔ ریپو آپلود کن.
-3. در ریپو: Settings ← Pages ← Source: «Deploy from a branch» ← Branch: `main` و پوشهٔ `/ (root)`.
-4. بعد از یکی دو دقیقه سایت روی `https://hashemsh.github.io/` و نسخهٔ فارسی روی `https://hashemsh.github.io/fa/` بالا می‌آید.
+Serve the folder over HTTP (opening `index.html` directly with `file://` breaks the `fa/` language link):
 
-اگر دامنهٔ شخصی وصل کردی، آدرس‌های داخل `sitemap.xml` و `robots.txt` را عوض کن.
-
-## تست محلی
-
-فایل را مستقیم با دوبار کلیک باز نکن (لینک زبان `fa/` روی `file://` پوشه را نشان می‌دهد). بهتر است داخل این پوشه اجرا کنی:
-
-```
+```bash
 python3 -m http.server 8000
 ```
 
-و `http://localhost:8000` را باز کنی.
+Then open http://localhost:8000.
 
-## وابستگی‌ها
+## Deploy to GitHub Pages
 
-- همهٔ فریم‌ها، لوگو و استایل‌ها داخل همین پوشه هستند و از جای دیگری لود نمی‌شوند.
-- تنها وابستگی بیرونی فونت‌هاست که از Google Fonts لود می‌شود (Space Grotesk برای انگلیسی و Vazirmatn برای فارسی). بدون اینترنت فونت جایگزین سیستم نمایش داده می‌شود.
+1. Push the contents of this folder to the root of the `hashemsh.github.io` repository.
+2. In the repository, go to Settings → Pages and choose "Deploy from a branch", branch `main`, folder `/ (root)`.
+3. The site is served at https://hashemsh.github.io/ (English) and https://hashemsh.github.io/fa/ (Persian).
 
-## تغییر دادن ویدئو
+If you attach a custom domain, update the URLs in `sitemap.xml` and `robots.txt`.
 
-فریم‌ها را با ffmpeg بساز و جایگزین کن:
+## Dependencies
 
-```
+Everything the site needs (frames, logo, CSS, JS) lives in this repository. The only external resource is Google Fonts: Space Grotesk (English) and Vazirmatn (Persian). Without internet access the browser falls back to a system font.
+
+## Replacing the video
+
+Export new frames with ffmpeg:
+
+```bash
 ffmpeg -i video.mp4 -an -vf "fps=24" -c:v libwebp -quality 86 assets/frames/f%03d.webp
 ```
 
-اگر تعداد فریم‌ها از ۲۴۰ تا فرق کرد، عدد `N=240` را در بالای `js/main.js` عوض کن.
+If the number of frames is not 240, update `N` at the top of `js/main.js`.
+
+## Editing content
+
+- English text: `index.html`
+- Persian text: `fa/index.html`
+- Shared look and feel: `css/style.css` (Persian-specific tweaks in `css/fa.css`)
