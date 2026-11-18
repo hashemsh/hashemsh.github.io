@@ -1,0 +1,17 @@
+/* Persian (RTL) overrides, loaded after style.css */
+.cards.wide{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}.row.yr{grid-template-columns:180px 1fr}.row{max-width:42em}.card p.q{font-size:16px;color:var(--ink);line-height:1.55;margin-bottom:14px}.card a{margin-top:14px;font-size:12px;letter-spacing:.15em;color:var(--blue);text-decoration:none}footer{line-height:1.8;gap:24px}
+.navr{display:flex;align-items:center;gap:30px}.lang{font:500 12px "Vazirmatn",sans-serif;padding:7px 14px;border:1px solid rgba(160,175,255,.35);border-radius:99px;color:var(--ink);text-decoration:none}.lang:hover{border-color:var(--blue)}
+body{font-family:"Vazirmatn",Tahoma,system-ui,sans-serif}
+*{letter-spacing:0!important}
+h1{line-height:1.2;font-weight:800;font-size:clamp(32px,4.1vw,70px)}
+h2{line-height:1.45;max-width:none;font-size:clamp(23px,2.35vw,40px)}
+.sub,.row p,.card p{line-height:1.9}
+.eyebrow{font-size:15px}
+.btn{font-family:inherit;font-size:15px;padding:15px 30px}
+.chip{font-size:14px}
+.row b{font-size:15px}
+.row h3,.card h3{line-height:1.5}
+.cu{direction:ltr}
+nav li{font-size:15px}
+nav ul{gap:28px}
+footer{font-size:13px}.glabel{font-size:14px}
